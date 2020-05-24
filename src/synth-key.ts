@@ -13,7 +13,7 @@ export class SynthKey {
 		this.frequency = (440 * Math.pow(2, (KeyDefinition.scale.indexOf(this.note) - 10) / 12)) * (this.octave ? 2 : 1)
 	}
 
-	static create(note: string, index: number, bus: EventBus): HTMLButtonElement { 
+	static create(note: string, index: number, bus: EventBus): HTMLButtonElement {
 
 		let button: HTMLButtonElement = <HTMLButtonElement>document.createElement('button')
 		let key = new SynthKey(note, index)

@@ -1,6 +1,8 @@
 import { SynthKey } from "./synth-key"
 import { CHANNEL } from "./synth-component";
 
+export enum ControlType { GAIN, DETUNE, DELAY }
+
 export class SynthEvent { get type(): any { return this.constructor } }
 
 export class NoteOnEvent extends SynthEvent {
@@ -15,18 +17,18 @@ export class NoteOffEvent extends SynthEvent {
 	constructor(key: SynthKey) { super(); this.key = key}
 }
 
-export enum ControlType { GAIN, FILTER }
-
 export class ControlEvent extends SynthEvent {
 	
-	public path: CHANNEL
-	public type: ControlType
+	public channel: CHANNEL
+	public control: ControlType
+	public value: number
 
-	constructor(path: CHANNEL, type: ControlType) { 
+	constructor(channel: CHANNEL, control: ControlType, value) { 
 		
 		super();
-		this.type = type
-		this.path = path
+		this.control = control
+		this.channel = channel
+		this.value = parseInt(value)
 	}
 }
 

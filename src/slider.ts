@@ -1,19 +1,29 @@
-import { EventBus, ControlEvent, ControlType } from "./event-bus"
-import { CHANNEL } from "./synth-component"
+import { EventBus, ControlEvent, ControlType } from "./event-bus.js"
+import { CHANNEL } from "./synth-component.js"
 
-export abstract class Slider {
+export class Slider {
 
-	static create(bus: EventBus, path: CHANNEL, type: ControlType, name: String): Array<HTMLElement> {
+	private label: HTMLLabelElement
+	private input: HTMLInputElement
 
-		let label: HTMLLabelElement = <HTMLLabelElement>document.createElement('label')
-		let input: HTMLInputElement = <HTMLInputElement>document.createElement('input')
+	public get elements() { return [ this.label, this.input ]}
 
-		input.type = 'range'
-		input.min = '1'
-		input.max = '100'
-		input.value = '50'
+	constructor(bus: EventBus, path: CHANNEL, type: ControlType, name: string) {
 
-		input.onchange = () => bus.fire(new ControlEvent(path, type))
-		return [label, input]
+		this.label = <HTMLLabelElement>document.createElement('label')
+		this.input = <HTMLInputElement>document.createElement('input')
+
+		this.label.innerText = name
+		this.input.type = 'range'
+		this.input.min = '1'
+		this.input.max = '100'
+		this.input.value = '50'
+
+		this.input.oninput = (ev) => this.on_event(bus, ev, path, type)
+	}
+
+	on_event(bus, ev, path, type) {
+
+		bus.fire(new ControlEvent(path, type, (<HTMLInputElement>ev.target).value))
 	}
 }

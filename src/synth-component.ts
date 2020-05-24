@@ -3,7 +3,7 @@ export enum WAVEFORM { SINE = 'sine', SQUARE = 'square' }
 
 export abstract class SynthComponent {
 	
-	public abstract node: GainNode | OscillatorNode | BiquadFilterNode
+	public abstract node: GainNode | OscillatorNode | DelayNode
 
 	protected ctx: AudioContext
 	protected path: CHANNEL

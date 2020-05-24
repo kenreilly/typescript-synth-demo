@@ -1,6 +1,6 @@
 :root {
 	--key-root: calc(100vw / 28 * 2);
-	--key-size-offset: calc(var(--key-root) * .4);
+	--key-size-offset: calc(var(--key-root) * .38);
 	--key-width-white: var(--key-root);
 	--key-width-black: calc(var(--key-root) - var(--key-size-offset) );
 	--key-offset-black: calc(var(--key-width-black) / 2);
@@ -77,6 +77,7 @@ main > canvas {
 	width: 100%;
 	grid-row: 1;
 	grid-column: 1/2;
+	padding: 1vh;
 }
 
 main > output {
@@ -142,7 +143,7 @@ footer > button:not([name*="#"]) + button:not([name*="#"]) { margin-left: calc(v
 
 footer > button[name*="#"] {
 	background: var(--key-black-color);
-	height: 70%;
+	height: 60%;
 	vertical-align: top;
 	margin-left: var(--key-offset-black);
 	margin-right: var(--key-offset-black);

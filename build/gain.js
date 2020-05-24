@@ -6,6 +6,7 @@ export class Gain extends SynthComponent {
         this.node = this.ctx.createGain();
         if (path == CHANNEL.MASTER) {
             this.node.connect(ctx.destination);
+            this.gain.value = .1;
         }
     }
 }

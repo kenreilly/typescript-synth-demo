@@ -1,13 +1,17 @@
-import { ControlEvent } from "./event-bus";
+import { ControlEvent } from "./event-bus.js";
 export class Slider {
-    static create(bus, path, type, name) {
-        let label = document.createElement('label');
-        let input = document.createElement('input');
-        input.type = 'range';
-        input.min = '1';
-        input.max = '100';
-        input.value = '50';
-        input.onchange = () => bus.fire(new ControlEvent(path, type));
-        return [label, input];
+    get elements() { return [this.label, this.input]; }
+    constructor(bus, path, type, name) {
+        this.label = document.createElement('label');
+        this.input = document.createElement('input');
+        this.label.innerText = name;
+        this.input.type = 'range';
+        this.input.min = '1';
+        this.input.max = '100';
+        this.input.value = '50';
+        this.input.oninput = (ev) => this.on_event(bus, ev, path, type);
+    }
+    on_event(bus, ev, path, type) {
+        bus.fire(new ControlEvent(path, type, ev.target.value));
     }
 }
