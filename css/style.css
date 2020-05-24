@@ -1,0 +1,157 @@
+:root {
+	--key-root: calc(100vw / 28 * 2);
+	--key-size-offset: calc(var(--key-root) * .4);
+	--key-width-white: var(--key-root);
+	--key-width-black: calc(var(--key-root) - var(--key-size-offset) );
+	--key-offset-black: calc(var(--key-width-black) / 2);
+
+	--key-white-color: #aabbcc;
+	--key-white-accent: #a0b0c0;
+	--key-black-color: #000000;
+	--key-black-accent: #404040;
+}
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  background: transparent; /* Otherwise white in Chrome */
+  height: 2vh;
+}
+
+input[type=range]::-webkit-slider-thumb, input[type=range]::-moz-range-thumb { 
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 2vh;
+  width: 2vh;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  
+} 
+
+input[type=range]::-webkit-slider-runnable-track, input[type=range]::-moz-range-track {
+  height: 2vh;
+  cursor: pointer;
+  /* animate: 0.2s; */
+  box-shadow: 1px 1px 1px #000000;
+  background: #301010;
+  border: 1px solid #000000;
+  border-radius: 4px;
+}
+
+html, body {
+	background: black;
+	margin: 0;
+	padding: 0;
+	/* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header {
+	background: #1a1a1a;
+	height: 8vh;
+	box-shadow: inset 0px 2px 2px #200010;
+	font-size: 2em;
+	color: #505050;
+	text-shadow: 1px 0px 1px white;
+	line-height: 8vh;
+	padding-left: 2vw;
+}
+
+main {
+	background: #2a2a2a;
+	height: 60vh;
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	grid-template-rows: 3fr 2fr;
+	padding: 1.4vh;
+	gap: 1.4vh;
+}
+
+main > canvas {
+	background: radial-gradient(#000000 52%, #001005 74%, #002010);
+	box-shadow: 0px 0px 2px #201000;
+	border: 1px solid #003010;
+	border-radius: 2vh;
+	box-sizing: border-box;
+	height: 100%;
+	width: 100%;
+	grid-row: 1;
+	grid-column: 1/2;
+}
+
+main > output {
+	background: radial-gradient(#000000 52%, #000510 74%, #001020);
+	box-sizing: border-box;
+	box-shadow: 0px 0px 2px #201000;
+	border: 1px solid #002010;
+	border-radius: 2vh;
+	grid-column: 1/2;
+	grid-row: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+main > output > b {
+	color: black;
+	font-size: 10vh;
+	font-weight: 100;
+	text-shadow: 1px 1px 1px cyan, 0px -1px 1px lightyellow
+}
+
+main > div {
+	background: #100500;
+	border-radius: 2vh;
+	grid-column: 2;
+	grid-row: 1/3;
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	align-items: center;
+	align-content: space-evenly;
+	justify-items: stretch;
+	padding: 2vh 6vw;
+}
+
+main > div > label { 
+	grid-column: 1; 
+	color: white; 
+	/* text-align: center; */
+}
+main > div > input { grid-column: 2; color: white; }
+ 
+footer {
+	height: 32vh;
+	background-color: white;
+	position: relative;
+}
+
+footer > button {
+	/* border: 1px solid #b0b0b0; */
+	border: 1px solid #203040;
+	background-color: var(--key-white-color);
+	border-top: 0;
+	margin: 0;
+	padding: 0;
+	flex: 1;
+	width: var(--key-width-white);
+	height: 100%;
+	margin-right: calc(var(--key-width-black) * -1);
+}
+
+footer > button:not([name*="#"]) + button:not([name*="#"]) { margin-left: calc(var(--key-width-white) - var(--key-size-offset)); }
+
+footer > button[name*="#"] {
+	background: var(--key-black-color);
+	height: 70%;
+	vertical-align: top;
+	margin-left: var(--key-offset-black);
+	margin-right: var(--key-offset-black);
+	z-index: 2;
+	position: relative;
+	width: var(--key-width-black);
+} 
+
+footer > button[name*="#"] + button { margin-left: calc(var(--key-width-black) * -1); }
+
+footer > button:active { background: linear-gradient(200deg, var(--key-white-color), var(--key-white-accent)); }
+footer > button[name*="#"]:active { background: linear-gradient(-140deg, var(--key-black-color), var(--key-black-accent)); }
