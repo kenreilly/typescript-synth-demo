@@ -19,11 +19,6 @@ export class Slider {
 		this.input.max = '100'
 		this.input.value = '50'
 
-		this.input.oninput = (ev) => this.on_event(bus, ev, path, type)
-	}
-
-	on_event(bus, ev, path, type) {
-
-		bus.fire(new ControlEvent(path, type, (<HTMLInputElement>ev.target).value))
+		this.input.oninput = (ev) => bus.fire(new ControlEvent(path, type, (<HTMLInputElement>ev.target).value))
 	}
 }

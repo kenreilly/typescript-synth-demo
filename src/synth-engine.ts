@@ -62,7 +62,6 @@ export class SynthEngine {
 
 			case ControlType.DELAY:
 				return this.delays[ev.channel].mix = ev.value
-
 		}
 	}
 }

@@ -1,9 +1,10 @@
 # typescript-synth-demo
 Synthesizer example application built with HTML, CSS, and TypeScript
 
-<!-- ![](./images/preview.png) -->
+![](preview.png)
 
 ### Introduction
+
 <!-- This project is the companion source for the corresponding article:
 
 [📷 Building a Camera App in TypeScript](https://itnext.io/building-a-camera-app-in-typescript-f1981f5ce960). -->

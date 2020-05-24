@@ -23,7 +23,6 @@ class Synth {
         this.sliders.forEach((s) => s.elements.forEach((e) => this.panel.appendChild(e)));
         this.keydef.keys.forEach((key) => this.keyboard.appendChild(key));
         this.signal_bus.listen(this.on_signal.bind(this));
-        // this.engine.test()
     }
     static on_signal(ev) {
         switch (ev.type) {
